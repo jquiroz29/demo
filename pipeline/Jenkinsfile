@@ -12,7 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
+     docker.withRegistry('https://index.docker.io/v2/', 'MyGitHub') {
        def app = docker.build("bambino29/docker-node-demo:${commit_id}", '.').push()
      }
    }
