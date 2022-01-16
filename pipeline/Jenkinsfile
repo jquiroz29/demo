@@ -8,9 +8,9 @@ node {
    }
    
    stage('Push image') {
-     docker.withRegistry('https://index.docker.io/v2/', 'DockerHub') {           
-       app.push("${env.BUILD_NUMBER}")            
-       pp.push("latest")        
+      withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]) {           
+         sh 'docker login -u bambino29 -p ${DockerHub}'
+         sh 'docker push bambino29/docker-node-demo'
      }    
    } 
 }
