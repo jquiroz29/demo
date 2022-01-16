@@ -8,8 +8,8 @@ node {
    }
    
    stage('Push image') {
-      withCredentials([string(credentialsId: 'DockerHub', variable: 'DockerHub')]) {           
-         sh 'docker login -u bambino29 -p ${DockerHub}'
+      withCredentials([string(credentialsId: 'dockerhub-passwd', variable: 'dockerhub-passwd')]) {           
+         sh 'docker login -u bambino29 -p ${dockerhub-passwd}'
          sh 'docker push bambino29/docker-node-demo'
      }    
    } 
