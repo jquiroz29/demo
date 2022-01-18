@@ -32,7 +32,7 @@ pipeline {
       stage('Checkout') {
         steps {
         // Get Github repo using Github credentials (previously added to Jenkins credentials)
-        checkout scm
+        checkout BbS(branches: [[name: '*/master']], credentialsId: 'MyGitHub', extensions: [], id: '815943dd-90f2-46c2-9507-c8886adca294', mirrorName: '', projectName: '', repositoryName: 'https://github.com/jquiroz29/demo.git', serverId: '', sshCredentialsId: '')
       }
       stage('Install dependencies') {
         steps {
