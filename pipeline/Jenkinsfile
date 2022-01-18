@@ -32,7 +32,7 @@ pipeline {
       stage('Checkout') {
         steps {
         // Get Github repo using Github credentials (previously added to Jenkins credentials)
-          checkout scm
+        checkout scm
       }
       stage('Install dependencies') {
         steps {
