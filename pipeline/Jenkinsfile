@@ -32,7 +32,7 @@ pipeline {
       stage('Checkout') {
         steps {
         // Get Github repo using Github credentials (previously added to Jenkins credentials)
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jquiroz29/demo']]])        }
+          checkout scm
       }
       stage('Install dependencies') {
         steps {
