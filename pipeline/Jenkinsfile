@@ -55,7 +55,7 @@ pipeline {
                           -Dsonar.projectName=demo \
                           -Dsonar.projectVersion=0.0.${BUILD_NUMBER} \
                           -Dsonar.host.url=http://161.35.63.161:9000 \
-                          -Dsonar.sources=./${PROJECT_ROOT}/*.* \
+                          -Dsonar.sources=./${PROJECT_ROOT}/ \
                           -Dsonar.login=a8a720c31b7d016512f079439e1b521781e4590d \
                           -Dsonar.password= "
             }
