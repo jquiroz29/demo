@@ -57,7 +57,7 @@ pipeline {
                           -Dsonar.host.url=http://161.35.63.161:9000 \
                           -Dsonar.sources=./${PROJECT_ROOT}/app.js,./${PROJECT_ROOT}/config/db.config.js,./${PROJECT_ROOT}/routes/developers.js \
                           -Dsonar.login=a8a720c31b7d016512f079439e1b521781e4590d \
-                          -Dsonar.password= \
+                          -Dsonar.password= "
             }
             timeout(time: 3, unit: 'MINUTES') {
               // In case of SonarQube failure or direct timeout exceed, stop Pipeline
