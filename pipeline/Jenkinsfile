@@ -41,30 +41,6 @@ pipeline {
           sh "cd ${PROJECT_ROOT}; npm install"
         }
       }
-      stage('scan') {
-          environment {
-            // Previously defined in the Jenkins "Global Tool Configuration"
-            scannerHome = tool 'sonar-scanner'
-          }
-          steps {
-            // "sonarqube" is the server configured in "Configure System"
-            withSonarQubeEnv('sonarqube') {
-              // Execute the SonarQube scanner with desired flags
-              sh "${scannerHome}/bin/sonar-scanner \
-                          -Dsonar.projectKey=demo \
-                          -Dsonar.projectName=demo \
-                          -Dsonar.projectVersion=0.0.${BUILD_NUMBER} \
-                          -Dsonar.host.url=http://161.35.63.161:9000 \
-                          -Dsonar.sources=./${PROJECT_ROOT}/ \
-                          -Dsonar.login=a8a720c31b7d016512f079439e1b521781e4590d \
-                          -Dsonar.password= "
-            }
-            timeout(time: 3, unit: 'MINUTES') {
-              // In case of SonarQube failure or direct timeout exceed, stop Pipeline
-              waitForQualityGate abortPipeline: qualityGateValidation(waitForQualityGate())
-            }
-          }
-      }
       stage('Build docker-image') {
         steps {
           sh "cd ./${PROJECT_ROOT};docker build -t ${REGISTRY}:${BUILD_NUMBER} . "
