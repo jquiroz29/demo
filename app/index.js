@@ -26,7 +26,7 @@ async function main() {
     // Connect to the MongoDB cluster
     await client.connect();
     // Establish and verify connection
-    await client.db("admin").command({ ping: 1 });
+    //await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to server");
 
     // Make the appropriate DB calls
